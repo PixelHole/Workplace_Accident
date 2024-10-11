@@ -10,11 +10,11 @@ public class DropBridgeScript : MonoBehaviour
 
     public void ExtendBridge()
     {
-        Bridge.DORotateQuaternion(Quaternion.Euler(0, 0, 0), DropTime);
+        Bridge.DOLocalRotate(new Vector3(0, 0, 0), DropTime);
     }
 
     public void DrawBridge()
     {
-        Bridge.DORotateQuaternion(Quaternion.Euler(-90, 0, 0), DropTime);
+        Bridge.DOLocalRotate(new Vector3(-90, 0, 0), DropTime);
     }
 } 

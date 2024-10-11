@@ -14,7 +14,7 @@ public class CollisionDetectionScript : MonoBehaviour
         if (!rb) return;
         
         var speed = rb.velocity.magnitude;
-        
+
         if (speed > SpeedThreshold) EntityCrushed.Invoke();
     }
 }

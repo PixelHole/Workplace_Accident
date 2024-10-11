@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private CameraSystemScript cameraSystem;
-    [SerializeField] private List<ParticleSystem> Yippies;
+    [SerializeField] private List<ParticleSystem> Yippies = new List<ParticleSystem>();
     [SerializeField] private AudioSource EndLevelAudio;
     // must be assigned in editor
     public List<BossScript> Bosses = new List<BossScript>();
@@ -40,8 +40,8 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator FinishLevel()
     {
-        EndLevelAudio.Play();
         EnableYippieParticles();
+        EndLevelAudio.Play();
         LevelEnded.Invoke();
         yield return new WaitForSeconds(2);
         MoveCamera();
@@ -52,6 +52,7 @@ public class LevelManager : MonoBehaviour
         foreach (var yippie in Yippies)
         {
             yippie.Play();
+            yippie.GetComponent<AudioSource>().Play();
         }
     }
 

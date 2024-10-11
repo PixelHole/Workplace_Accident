@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Input
   - Pickable
+  - Boss
+  - Camera System
+  - GameManager
+  - SceneManager
+  - Moving Platform
   layers:
   - Default
   - TransparentFX

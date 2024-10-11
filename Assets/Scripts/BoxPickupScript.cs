@@ -8,10 +8,10 @@ public class BoxPickupScript : MonoBehaviour
 {
     [SerializeField] private InputInterpreter inputInterpreter;
     [SerializeField] private Transform HoldPosition;
-    private GameObject SelectedBox;
-    private bool HasPickedBox = false;
+    [SerializeField] private GameObject SelectedBox;
+    [SerializeField] private bool HasPickedBox = false;
 
-    private bool LastInputHandled;
+    [SerializeField] private bool LastInputHandled;
     
     
     void Start()
@@ -79,6 +79,8 @@ public class BoxPickupScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (!other.transform.CompareTag("Pickable")) return;
+        
         if (SelectedBox) SelectedBox = null;
     }
 }

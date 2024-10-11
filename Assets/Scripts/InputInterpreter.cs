@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,22 @@ using UnityEngine.Serialization;
 
 public class InputInterpreter : MonoBehaviour
 {
+    private SceneManagement sceneManagement;
+    
     public byte InputMovementDirection;
     public int InputRotationDirection;
     public bool InputinteractionRequest;
+
+
+    private void Awake()
+    {
+        GetComponents();
+    }
+
+    private void GetComponents()
+    {
+        sceneManagement = GameObject.FindWithTag("SceneManager").GetComponent<SceneManagement>();
+    }
 
     public void RequestMoveForward()
     {
@@ -42,5 +56,10 @@ public class InputInterpreter : MonoBehaviour
     public void RequestStopInteraction()
     {
         InputinteractionRequest = false;
+    }
+
+    public void RequestRestartScene()
+    {
+        sceneManagement.RestartLevel();
     }
 }

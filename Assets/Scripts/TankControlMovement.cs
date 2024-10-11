@@ -12,6 +12,7 @@ public class TankControlMovement : MonoBehaviour
     [SerializeField] private float RotationSpeed = 0.2f;
     [Space]
     [SerializeField] private Transform GroundCheck;
+    [SerializeField] private Transform ForcePosition;
 
     [SerializeField] private LayerMask GroundMask;
 
