@@ -29,7 +29,7 @@ public class CameraSystemScript : MonoBehaviour
 
     public void SetTargetAnchorIndex(string index) => SetTargetAnchorIndex(int.Parse(index));
 
-    private void SetTargetAnchorIndex(int index)
+    public void SetTargetAnchorIndex(int index)
     {
         if (index < 0 || index >= AnchorsParent.childCount) return;
         TargetAnchorIndex = index;

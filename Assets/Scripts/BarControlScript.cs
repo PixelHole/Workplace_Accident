@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class BarControlScript : MonoBehaviour
 {
-    public float Progress => (float)Step / MaxStep;
+    public float Progress => Step / MaxStep;
     public float Step;
     public float MaxStep;
 
@@ -25,6 +25,11 @@ public class BarControlScript : MonoBehaviour
     {
         if (value < 0 || value > MaxStep) return;
         Step = value;
-        ProgressChanged.Invoke(Step);
+        ProgressChanged.Invoke(Progress);
+    }
+
+    public void SetStepFromVolume(float volume)
+    {
+        SetProgress((volume + 80) / 80 * MaxStep);
     }
 }

@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class BoxPickupScript : MonoBehaviour
 {
     [SerializeField] private InputInterpreter inputInterpreter;
+    [SerializeField] private Transform HoldPosition;
     private GameObject SelectedBox;
     private bool HasPickedBox = false;
 
@@ -20,6 +22,7 @@ public class BoxPickupScript : MonoBehaviour
     private void GetComponents()
     {
         if (!inputInterpreter) inputInterpreter = GameObject.FindWithTag("Input").GetComponent<InputInterpreter>();
+        if (!HoldPosition) HoldPosition = transform.GetChild(0);
     }
 
     private void Update()
@@ -59,6 +62,12 @@ public class BoxPickupScript : MonoBehaviour
         SelectedBox.GetComponent<Rigidbody>().isKinematic = true;
         SelectedBox.transform.parent = transform;
         HasPickedBox = true;
+        MoveBoxToHoldPosition();
+    }
+
+    private void MoveBoxToHoldPosition()
+    {
+        SelectedBox.transform.DOMove(HoldPosition.position, 0.1f);
     }
     
     private void OnTriggerEnter(Collider other)

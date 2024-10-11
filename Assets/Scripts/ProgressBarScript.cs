@@ -11,7 +11,7 @@ public class ProgressBarScript : MonoBehaviour
     [SerializeField] private BarControlScript ControlScript;
     [SerializeField] private float MaxLength;
     
-    private void Start()
+    private void Awake()
     {
         GetComponents();
     }
@@ -32,9 +32,7 @@ public class ProgressBarScript : MonoBehaviour
             return;
         }
         BarRenderer.enabled = true;
-
-        Debug.Log(step);
-        Debug.Log(GetZScaleFromStep());
+        
         transform.localScale = new Vector3(1, 1, GetZScaleFromStep());
     }
 
